@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美剧网站 - 美剧推荐、剧集资料与观看指南</title>
+<meta name="description" content="美剧网站为美剧爱好者整理热门美剧推荐、剧集分类、新剧动态、经典剧单与观看指南，帮助你快速找到想看的美国电视剧。">
+<meta name="keywords" content="美剧网站,美剧推荐,美国电视剧,美剧排行榜,美剧资源,美剧资讯">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+  :root{
+    --bg:#0d1117;
+    --bg-soft:#141b24;
+    --panel:#1a2330;
+    --line:#26313f;
+    --txt:#e6edf5;
+    --txt-dim:#9aa8b8;
+    --accent:#e50914;
+    --accent-soft:#ff3b30;
+    --gold:#f2c14e;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+    background:var(--bg);
+    color:var(--txt);
+    line-height:1.7;
+    font-size:15px;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 18px;}
+
+  /* 顶部 */
+  .topbar{
+    background:linear-gradient(90deg,#0d1117 0%,#1a0d10 100%);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(6px);
+  }
+  .topbar .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:62px;gap:16px;
+  }
+  .logo{display:flex;align-items:center;gap:9px;font-size:19px;font-weight:800;letter-spacing:.5px;}
+  .logo .dot{
+    width:26px;height:26px;border-radius:7px;
+    background:linear-gradient(135deg,var(--accent),#7a0b12);
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;color:#fff;font-weight:900;
+  }
+  .logo span.hl{color:var(--accent-soft);}
+  .nav{display:flex;gap:22px;font-size:14px;color:var(--txt-dim);}
+  .nav a:hover{color:#fff;}
+  .search-box{
+    display:flex;align-items:center;gap:6px;
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:20px;padding:5px 12px;
+  }
+  .search-box input{
+    background:transparent;border:none;outline:none;color:var(--txt);
+    font-size:13px;width:130px;
+  }
+  .search-box input::placeholder{color:#5f6d7e;}
+  .search-box button{
+    background:var(--accent);border:none;color:#fff;
+    padding:4px 12px;border-radius:14px;font-size:12px;cursor:pointer;
+  }
+  .search-box button:hover{background:var(--accent-soft);}
+
+  /* 首屏 */
+  .hero{
+    background:
+      radial-gradient(900px 400px at 12% -10%,rgba(229,9,20,.22),transparent 65%),
+      radial-gradient(700px 380px at 90% 0%,rgba(242,193,78,.12),transparent 60%),
+      var(--bg-soft);
+    border-bottom:1px solid var(--line);
+    padding:52px 0 44px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.35fr .95fr;gap:36px;align-items:center;}
+  .hero h1{font-size:34px;line-height:1.3;font-weight:800;letter-spacing:.5px;}
+  .hero h1 em{font-style:normal;color:var(--accent-soft);}
+  .hero p.lead{margin-top:16px;color:var(--txt-dim);font-size:15.5px;max-width:640px;}
+  .hero-tags{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;}
+  .hero-tags a{
+    font-size:13px;padding:6px 14px;border-radius:18px;
+    background:rgba(255,255,255,.05);border:1px solid var(--line);
+    color:var(--txt-dim);transition:.2s;
+  }
+  .hero-tags a:hover{color:#fff;border-color:var(--accent);background:rgba(229,9,20,.14);}
+
+  .hero-panel{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px 22px;
+  }
+  .hero-panel h2{font-size:15px;font-weight:700;margin-bottom:14px;color:var(--gold);letter-spacing:.5px;}
+  .quick-list{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .quick-list li{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--txt-dim);}
+  .quick-list li b{color:var(--txt);font-weight:600;}
+  .num{
+    flex:0 0 20px;height:20px;border-radius:5px;background:#232f3f;
+    color:var(--gold);font-size:11px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;margin-top:3px;
+  }
+
+  /* 通用区块 */
+  section{padding:46px 0;}
+  .sec-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    gap:16px;margin-bottom:24px;flex-wrap:wrap;
+  }
+  .sec-head h2{font-size:22px;font-weight:800;letter-spacing:.5px;position:relative;padding-left:14px;}
+  .sec-head h2::before{
+    content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;
+    border-radius:3px;background:linear-gradient(180deg,var(--accent),#7a0b12);
+  }
+  .sec-head p{font-size:13.5px;color:var(--txt-dim);max-width:560px;}
+
+  /* 分类 */
+  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .cat-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px;transition:.22s;
+  }
+  .cat-card:hover{transform:translateY(-3px);border-color:var(--accent);}
+  .cat-card h3{font-size:15.5px;margin-bottom:8px;}
+  .cat-card p{font-size:13px;color:var(--txt-dim);line-height:1.65;}
+  .cat-card .ico{font-size:20px;margin-bottom:10px;display:block;}
+
+  /* 剧集卡片 */
+  .show-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .show-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;transition:.22s;
+  }
+  .show-card:hover{border-color:#3a4757;transform:translateY(-3px);}
+  .show-cover{
+    height:118px;display:flex;align-items:center;justify-content:center;
+    font-size:26px;font-weight:800;letter-spacing:2px;color:rgba(255,255,255,.92);
+  }
+  .cv1{background:linear-gradient(135deg,#2b1b3d,#5c2a6e);}
+  .cv2{background:linear-gradient(135deg,#12303f,#1f6b7a);}
+  .cv3{background:linear-gradient(135deg,#3a1c1c,#8c2b26);}
+  .cv4{background:linear-gradient(135deg,#1b2c1d,#3f6b3a);}
+  .cv5{background:linear-gradient(135deg,#2a2a3d,#4a4a7a);}
+  .cv6{background:linear-gradient(135deg,#3d2a15,#8a6320);}
+  .show-body{padding:15px 16px 17px;display:flex;flex-direction:column;gap:8px;flex:1;}
+  .show-body h3{font-size:15.5px;font-weight:700;}
+  .show-meta{font-size:12px;color:var(--gold);letter-spacing:.3px;}
+  .show-body p{font-size:13px;color:var(--txt-dim);line-height:1.65;flex:1;}
+  .show-foot{
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:12px;color:#6d7c8d;border-top:1px dashed var(--line);padding-top:10px;
+  }
+  .pill{
+    font-size:11px;padding:2px 9px;border-radius:10px;
+    background:rgba(229,9,20,.14);color:var(--accent-soft);border:1px solid rgba(229,9,20,.35);
+  }
+
+  /* 榜单 + 侧栏 */
+  .rank-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:26px;align-items:start;}
+  .rank-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .rank-item{
+    display:flex;gap:14px;align-items:center;
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:13px 16px;transition:.2s;
+  }
+  .rank-item:hover{border-color:#3a4757;}
+  .rank-no{
+    flex:0 0 30px;height:30px;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:14px;background:#232f3f;color:var(--txt-dim);
+  }
+  .rank-item:nth-child(1) .rank-no{background:linear-gradient(135deg,#e50914,#8c0a10);color:#fff;}
+  .rank-item:nth-child(2) .rank-no{background:linear-gradient(135deg,#c9a227,#8a6f14);color:#fff;}
+  .rank-item:nth-child(3) .rank-no{background:linear-gradient(135deg,#3f6b3a,#25411f);color:#fff;}
+  .rank-txt{flex:1;}
+  .rank-txt h3{font-size:14.5px;margin-bottom:3px;}
+  .rank-txt p{font-size:12.5px;color:var(--txt-dim);}
+  .rank-score{font-size:13px;color:var(--gold);font-weight:700;}
+
+  .side-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;margin-bottom:18px;
+  }
+  .side-card h3{font-size:15px;margin-bottom:12px;color:var(--gold);}
+  .side-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .side-card li{font-size:13.5px;color:var(--txt-dim);display:flex;gap:8px;}
+  .side-card li::before{content:"·";color:var(--accent);font-weight:900;}
+  .side-card li b{color:var(--txt);font-weight:600;}
+
+  /* 观看指南 */
+  .guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .guide-item{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;
+  }
+  .guide-item h3{font-size:15.5px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .guide-item h3 i{
+    font-style:normal;width:22px;height:22px;border-radius:6px;
+    background:rgba(229,9,20,.16);color:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;
+  }
+  .guide-item p{font-size:13.5px;color:var(--txt-dim);}
+
+  /* 资讯 */
+  .news-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .news-item{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;display:flex;flex-direction:column;gap:8px;
+  }
+  .news-item time{font-size:12px;color:#6d7c8d;}
+  .news-item h3{font-size:15px;}
+  .news-item p{font-size:13.5px;color:var(--txt-dim);}
+
+  /* FAQ */
+  .faq-list{display:flex;flex-direction:column;gap:12px;}
+  details{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:15px 18px;
+  }
+  details[open]{border-color:#3a4757;}
+  summary{
+    cursor:pointer;font-size:15px;font-weight:600;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";color:var(--accent-soft);font-size:18px;font-weight:700;}
+  details[open] summary::after{content:"−";}
+  details p{margin-top:11px;font-size:13.5px;color:var(--txt-dim);}
+
+  /* 页脚 */
+  footer{
+    background:#0a0e14;border-top:1px solid var(--line);
+    padding:38px 0 26px;margin-top:20px;
+  }
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:26px;}
+  .foot-grid h4{font-size:14px;margin-bottom:12px;color:var(--txt);}
+  .foot-grid p,.foot-grid li{font-size:13px;color:var(--txt-dim);}
+  .foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .foot-grid a:hover{color:var(--accent-soft);}
+  .copy{
+    margin-top:28px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:12.5px;color:#5f6d7e;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+
+  /* 响应式 */
+  @media (max-width:1000px){
+    .hero-grid{grid-template-columns:1fr;}
+    .cat-grid{grid-template-columns:repeat(2,1fr);}
+    .show-grid{grid-template-columns:repeat(2,1fr);}
+    .rank-layout{grid-template-columns:1fr;}
+    .guide-grid{grid-template-columns:1fr;}
+    .news-list{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:760px){
+    .nav{display:none;}
+    .hero h1{font-size:26px;}
+    .hero{padding:38px 0 34px;}
+    .show-grid{grid-template-columns:1fr;}
+    .cat-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    .search-box input{width:90px;}
+    .foot-grid{grid-template-columns:1fr;}
+    .sec-head h2{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <span class="dot">M</span>美剧<span class="hl">网站</span>
+    </a>
+    <nav class="nav">
+      <a href="#cate">剧集分类</a>
+      <a href="#hot">热门推荐</a>
+      <a href="#rank">人气榜单</a>
+      <a href="#guide">观看指南</a>
+      <a href="#news">剧集动态</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <div class="search-box">
+      <input type="text" placeholder="搜索剧名 / 类型" aria-label="搜索美剧">
+      <button type="button">搜索</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>美剧网站：帮你从海量<em>美国电视剧</em>里挑出真正值得看的那一部</h1>
+        <p class="lead">
+          面对每年上新的大量美剧，最难的不是“没有剧看”，而是不知道从哪一部开始。本站按类型、年份、口碑与更新情况整理剧集资料，
+          提供剧情简介、题材标签、季数信息与观看建议，让选剧这件事变得简单一些。
+        </p>
+        <div class="hero-tags">
+          <a href="#hot">犯罪悬疑</a>
+          <a href="#hot">科幻奇幻</a>
+          <a href="#hot">医疗职场</a>
+          <a href="#hot">喜剧生活</a>
+          <a href="#hot">历史传记</a>
+          <a href="#hot">青春校园</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h2>选剧前先想清楚三件事</h2>
+        <ul class="quick-list">
+          <li><span class="num">1</span><span><b>时间预算</b>：单季 8～10 集的短剧适合碎片时间，二十集以上的长剧更适合长期追更。</span></li>
+          <li><span class="num">2</span><span><b>题材偏好</b>：先确定自己想看轻松、烧脑还是情绪厚重的类型，再缩小范围。</span></li>
+          <li><span class="num">3</span><span><b>是否完结</b>：已完结的剧可以一次看完，连载中的剧需要接受等待更新的节奏。</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 分类 -->
+  <section id="cate">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>剧集分类导航</h2>
+        <p>美剧题材跨度很大，按类型筛选通常比按年份翻找更有效率。以下分类覆盖了观众最常搜索的几类方向。</p>
+      </div>
+      <div class="cat-grid">
+        <article class="cat-card">
+          <span class="ico">🕵️</span>
+          <h3>犯罪与悬疑</h3>
+          <p>以案件侦破、心理博弈、法律程序为主线，节奏偏紧，适合喜欢推理和反转的观众。</p>
+        </article>
+        <article class="cat-card">
+          <span class="ico">🚀</span>
+          <h3>科幻与奇幻</h3>
+          <p>包含太空、时间旅行、末世、超能力等设定，世界观较大，通常需要连续观看才能理解脉络。</p>
+        </article>
+        <article class="cat-card">
+          <span class="ico">🏥</span>
+          <h3>医疗与职场</h3>
+          <p>以医院、律所、企业为背景，人物关系密集，情节多围绕职业选择与道德困境展开。</p>
+        </article>
+        <article class="cat-card">
+          <span class="ico">😂</span>
+          <h3>喜剧与生活</h3>
+          <p>单集时长短，节奏轻快，适合作为下饭剧或睡前放松，对连续观看的依赖度较低。</p>
+        </article>
+        <article class="cat-card">
+          <span class="ico">🏛️</span>
+          <h3>历史与传记</h3>
+          <p>取材于真实事件或人物，观剧时能顺带了解时代背景，但需注意影视化改编与史实的差异。</p>
+        </article>
+        <article class="cat-card">
+          <span class="ico">🎓</span>
+          <h3>青春与校园</h3>
+          <p>聚焦成长、友情与自我认同，情绪表达直接，适合喜欢代入感强的观众。</p>
+        </article>
+        <article class="cat-card">
+          <span class="ico">👻</span>
+          <h3>恐怖与惊悚</h3>
+          <p>依靠氛围营造和悬念推进，部分剧集画面冲击较强，观看前建议留意内容提示。</p>
+        </article>
+        <article class="cat-card">
+          <span class="ico">👨‍👩‍👧</span>
+          <h3>家庭与剧情</h3>
+          <p>以家庭关系、代际冲突为核心，节奏相对舒缓，更看重人物塑造与情感铺垫。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热门推荐 -->
+  <section id="hot" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>热门美剧推荐</h2>
+        <p>以下为常见的高讨论度剧集类型示例，具体剧名与播出信息建议以官方平台公布为准。</p>
+      </div>
+      <div class="show-grid">
+        <article class="show-card">
+          <div class="show-cover cv1">悬疑</div>
+          <div class="show-body">
+            <h3>高智商犯罪题材</h3>
+            <div class="show-meta">剧情 / 犯罪 / 心理</div>
+            <p>这类剧通常以一桩主线案件贯穿全季，通过多线叙事逐步揭开真相，适合喜欢边看边推理的观众。</p>
+            <div class="show-foot"><span>适合：喜欢烧脑</span><span class="pill">推荐</span></div>
+          </div>
+        </article>
+        <article class="show-card">
+          <div class="show-cover cv2">科幻</div>
+          <div class="show-body">
+            <h3>太空与未来设定</h3>
+            <div class="show-meta">科幻 / 冒险 / 群像</div>
+            <p>以科技发展和宇宙探索为背景，往往需要观众投入较多注意力去理解设定与时间线。</p>
+            <div class="show-foot"><span>适合：设定党</span><span class="pill">推荐</span></div>
+          </div>
+        </article>
+        <article class="show-card">
+          <div class="show-cover cv3">医疗</div>
+          <div class="show-body">
+            <h3>医院职场群像</h3>
+            <div class="show-meta">剧情 / 职场 / 情感</div>
+            <p>急诊、手术与人事关系交织，单集节奏快，长期追更能感受到角色成长与关系变化。</p>
+            <div class="show-foot"><span>适合：长线追剧</span><span class="pill">推荐</span></div>
+          </div>
+        </article>
+        <article class="show-card">
+          <div class="show-cover cv4">喜剧</div>
+          <div class="show-body">
+            <h3>都市生活轻喜剧</h3>
+            <div class="show-meta">喜剧 / 日常 / 友情</div>
+            <p>单集二十分钟左右，笑点密集，剧情压力小，适合作为用餐或休息时的陪伴剧。</p>
+            <div class="show-foot"><span>适合：下饭剧</span><span class="pill">轻松</span></div>
+          </div>
+        </article>
+        <article class="show-card">
+          <div class="show-cover cv5">历史</div>
+          <div class="show-body">
+            <h3>时代背景正剧</h3>
+            <div class="show-meta">历史 / 传记 / 剧情</div>
+            <p>服化道与时代氛围是主要看点，观看时可以把剧集当作了解历史的入口，而非唯一依据。</p>
+            <div class="show-foot"><span>适合：慢节奏</span><span class="pill">深度</span></div>
+          </div>
+        </article>
+        <article class="show-card">
+          <div class="show-cover cv6">奇幻</div>
+          <div class="show-body">
+            <h3>史诗奇幻世界</h3>
+            <div class="show-meta">奇幻 / 冒险 / 权谋</div>
+            <p>人物众多、支线复杂，建议按季连续观看，中途长时间中断容易忘记人物关系。</p>
+            <div class="show-foot"><span>适合：世界观爱好者</span><span class="pill">宏大</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 榜单 + 侧栏 -->
+  <section id="rank">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>人气榜单与剧单参考</h2>
+        <p>榜单会随播出进度和观众讨论热度变化，这里提供的是选剧思路，而非固定排名。</p>
+      </div>
+      <div class="rank-layout">
+        <ol class="rank-list">
+          <li class="rank-item">
+            <span class="rank-no">1</span>
+            <div class="rank-txt">
+              <h3>口碑长线剧</h3>
+              <p>播出多季仍保持稳定讨论度，剧情结构完整，适合一次补完。</p>
+            </div>
+            <span class="rank-score">长期</span>
+          </li>
+          <li class="rank-item">
+            <span class="rank-no">2</span>
+            <div class="rank-txt">
+              <h3>年度新剧</h3>
+              <p>当季上线、话题度较高的新剧，题材多集中在悬疑与科幻方向。</p>
+            </div>
+            <span class="rank-score">新上线</span>
+          </li>
+          <li class="rank-item">
+            <span class="rank-no">3</span>
+            <div class="rank-txt">
+              <h3>迷你剧与限定剧</h3>
+              <p>集数少、故事完整，适合不想投入太多时间的观众。</p>
+            </div>
+            <span class="rank-score">短平快</span>
+          </li>
+          <li class="rank-item">
+            <span class="rank-no">4</span>
+            <div class="rank-txt">
+              <h3>喜剧与轻剧情</h3>
+              <p>情绪负担小，适合在工作日晚上放松观看。</p>
+            </div>
+            <span class="rank-score">解压</span>
+          </li>
+          <li class="rank-item">
+            <span class="rank-no">5</span>
+            <div class="rank-txt">
+              <h3>经典回顾剧</h3>
+              <p>播出年代较早但影响深远的作品，适合补剧和了解类型发展。</p>
+            </div>
+            <span class="rank-score">经典</span>
+          </li>
+        </ol>
+        <aside>
+          <div class="side-card">
+            <h3>按观看时长选剧</h3>
+            <ul>
+              <li><b>30 分钟以内</b>：情景喜剧、动画类</li>
+              <li><b>40～55 分钟</b>：犯罪、医疗、职场剧</li>
+              <li><b>55 分钟以上</b>：史诗奇幻、历史正剧</li>
+            </ul>
+          </div>
+          <div class="side-card">
+            <h3>追剧小提示</h3>
+            <ul>
+              <li>先看第一集前 15 分钟，判断节奏是否合口味</li>
+              <li>留意是否续订，避免看到一半没有后续</li>
+              <li>关注内容分级，部分剧集不适合未成年人</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 观看指南 -->
+  <section id="guide" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>美剧观看指南</h2>
+        <p>从选剧到追更，把常见的问题拆成几个可操作的步骤。</p>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-item">
+          <h3><i>1</i>确定观看渠道</h3>
+          <p>美剧的播出与上线渠道会因地区不同而存在差异，建议优先选择正规的流媒体平台或电视台官方渠道，注意区分正版与未授权来源。</p>
+        </article>
+        <article class="guide-item">
+          <h3><i>2</i>关注播出节奏</h3>
+          <p>美剧常见周更模式，也存在一次性放出全季的情况。追更前先确认更新频率，可以避免反复刷新等待。</p>
+        </article>
+        <article class="guide-item">
+          <h3><i>3</i>合理使用字幕</h3>
+          <p>中文字幕有助于理解对白中的俚语和背景梗。如果用于语言学习，可以尝试先看一遍带字幕，再看一遍无字幕版本。</p>
+        </article>
+        <article class="guide-item">
+          <h3><i>4</i>注意内容分级</h3>
+          <p>不同剧集在暴力、恐怖、成人内容方面的尺度差异较大，观看前可查阅分级信息，家庭共同观看时尤其需要留意。</p>
+        </article>
+        <article class="guide-item">
+          <h3><i>5</i>避免剧情剧透</h3>
+          <p>悬疑类剧集对剧透较敏感，追更期间尽量少看评论区与讨论帖，能明显提升观看体验。</p>
+        </article>
+        <article class="guide-item">
+          <h3><i>6</i>理性看待评分</h3>
+          <p>评分只能反映部分观众的偏好，题材是否合口味往往比分数更重要。可以多看几条简介再决定是否开追。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 资讯 -->
+  <section id="news">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>剧集动态与观察</h2>
+        <p>关于美剧行业与追剧方式的常规观察，帮助你理解剧集背后的运作逻辑。</p>
+      </div>
+      <div class="news-list">
+        <article class="news-item">
+          <time>行业观察</time>
+          <h3>流媒体如何影响美剧的集数与节奏</h3>
+          <p>相比传统电视网的长季模式，流媒体平台更倾向制作集数更少、节奏更紧凑的剧集，这也让单季故事更完整。</p>
+        </article>
+        <article class="news-item">
+          <time>观看习惯</time>
+          <h3>“一次性放出”与“周更”的体验差异</h3>
+          <p>一次性放出适合连续观看，但讨论热度集中且消退快；周更则能延长话题周期，也更容易形成观众讨论氛围。</p>
+        </article>
+        <article class="news-item">
+          <time>题材趋势</time>
+          <h3>悬疑与限定剧为何持续受到关注</h3>
+          <p>故事完整、集数可控是限定剧的主要优势，观众不必担心长期追更带来的时间成本。</p>
+        </article>
+        <article class="news-item">
+          <time>语言学习</time>
+          <h3>把美剧当作英语学习素材的注意事项</h3>
+          <p>生活类、职场类剧集的对白更接近日常表达，适合练习听力；科幻与历史剧则包含较多专业词汇。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background:var(--bg-soft);border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>常见问题</h2>
+        <p>关于美剧网站的定位与使用方式，整理了几个高频疑问。</p>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>美剧网站主要提供什么内容？</summary>
+          <p>本站以剧集资料整理和观看建议为主，包括题材分类、剧情简介、季数与更新情况说明、选剧思路和常见问题解答，帮助观众更快找到符合自己口味的剧集。</p>
+        </details>
+        <details>
+          <summary>怎样判断一部美剧是否适合自己？</summary>
+          <p>可以先看题材标签和剧情简介，再结合单集时长与总集数判断时间成本。如果对节奏比较敏感，建议先试看第一集的前十几分钟。</p>
+        </details>
+        <details>
+          <summary>连载中的美剧值得追吗？</summary>
+          <p>连载剧的优势是能参与讨论，劣势是需要等待更新，并且存在被砍或延期的情况。如果不希望中途断掉，可以优先选择已完结或已续订的剧集。</p>
+        </details>
+        <details>
+          <summary>在哪里可以观看正版美剧？</summary>
+          <p>不同地区的上线平台不同，建议通过当地正规流媒体服务或电视台官方渠道观看。具体可观看范围请以平台公布的信息为准。</p>
+        </details>
+        <details>
+          <summary>看美剧对学英语有帮助吗？</summary>
+          <p>有一定帮助，尤其是生活类与职场类剧集的对白更贴近日常表达。但需要注意影视对白与真实交流仍有差别，配合系统学习效果更好。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>美剧网站</h4>
+        <p>整理美剧题材分类、剧集资料与观看建议，帮助观众在众多美国电视剧中做出更合适的选择。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#cate">剧集分类</a></li>
+          <li><a href="#hot">热门推荐</a></li>
+          <li><a href="#rank">人气榜单</a></li>
+          <li><a href="#guide">观看指南</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>常见题材</h4>
+        <ul>
+          <li><a href="#hot">犯罪悬疑</a></li>
+          <li><a href="#hot">科幻奇幻</a></li>
+          <li><a href="#hot">医疗职场</a></li>
+          <li><a href="#hot">喜剧生活</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>使用说明</h4>
+        <ul>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#guide">观看提示</a></li>
+          <li><a href="#news">剧集动态</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>本站内容为剧集资料与观看建议整理，具体播出与上线信息请以官方平台公布为准。</span>
+      <span>© 美剧网站</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 平滑滚动（兼容不支持 scroll-behavior 的浏览器）
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = this.getAttribute('href');
+      if(id.length > 1){
+        var target = document.querySelector(id);
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      }
+    });
+  });
+
+  // 搜索框简单提示
+  var searchInput = document.querySelector('.search-box input');
+  var searchBtn = document.querySelector('.search-box button');
+  if(searchBtn && searchInput){
+    searchBtn.addEventListener('click', function(){
+      var val = searchInput.value.trim();
+      if(val === ''){
+        searchInput.focus();
+      }else{
+        alert('已记录搜索关键词：' + val + '\n可在剧集分类与热门推荐中查找相关内容。');
+      }
+    });
+    searchInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ searchBtn.click(); }
+    });
+  }
+</script>
+
+</body>
+          </html>
