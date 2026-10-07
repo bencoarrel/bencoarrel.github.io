@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>91次元官网入口 - 二次元内容导航与访问指引</title>
+<meta name="description" content="91次元官网入口页面，整理91次元相关访问方式、内容板块说明、使用注意事项与常见问题，帮助用户快速了解二次元内容平台的入口信息与浏览指引。">
+<meta name="keywords" content="91次元官网入口,91次元,次元入口,二次元内容,官网访问指引">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1c1b2e;
+  --ink-soft:#4b4a63;
+  --line:#e6e3f2;
+  --bg:#f7f5ff;
+  --card:#ffffff;
+  --brand:#6c4cf1;
+  --brand-deep:#4a2fd0;
+  --accent:#ff5f8f;
+  --accent-soft:#fff0f5;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(76,60,180,.10);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;height:68px;
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.5px}
+.logo-mark{
+  width:38px;height:38px;border-radius:12px;
+  background:linear-gradient(135deg,var(--brand),var(--accent));
+  color:#fff;display:grid;place-items:center;
+  font-size:17px;font-weight:800;
+  box-shadow:0 6px 16px rgba(108,76,241,.35);
+}
+.logo small{display:block;font-size:11px;font-weight:500;color:var(--ink-soft);letter-spacing:1px}
+.main-nav{display:flex;gap:6px;flex-wrap:wrap}
+.main-nav a{
+  padding:8px 14px;border-radius:999px;font-size:14px;color:var(--ink-soft);
+  transition:.2s;
+}
+.main-nav a:hover{background:var(--bg);color:var(--brand-deep)}
+.nav-cta{
+  padding:9px 20px;border-radius:999px;font-size:14px;font-weight:600;
+  background:linear-gradient(135deg,var(--brand),var(--brand-deep));
+  color:#fff;box-shadow:0 6px 18px rgba(108,76,241,.32);
+  white-space:nowrap;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 380px at 12% -10%,rgba(108,76,241,.20),transparent 65%),
+    radial-gradient(700px 340px at 92% 0%,rgba(255,95,143,.18),transparent 60%),
+    #ffffff;
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{
+  display:grid;grid-template-columns:1.25fr .85fr;
+  gap:48px;align-items:center;
+  padding:64px 0 60px;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;color:var(--brand-deep);
+  background:var(--bg);border:1px solid var(--line);
+  padding:6px 14px;border-radius:999px;margin-bottom:20px;
+}
+.hero-tag i{width:7px;height:7px;border-radius:50%;background:var(--accent);display:block}
+.hero h1{
+  font-size:clamp(28px,4.2vw,44px);
+  line-height:1.28;font-weight:800;letter-spacing:-.5px;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(120deg,var(--brand),var(--accent));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-lead{
+  margin-top:18px;font-size:16px;color:var(--ink-soft);max-width:620px;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 26px;border-radius:12px;font-size:15px;font-weight:600;
+  transition:.22s;border:1px solid transparent;cursor:pointer;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--brand),var(--brand-deep));
+  color:#fff;box-shadow:0 10px 24px rgba(108,76,241,.32);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(108,76,241,.40)}
+.btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand-deep)}
+
+.hero-side{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:26px 24px;
+}
+.hero-side h2{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.hero-side h2 span{
+  width:4px;height:16px;border-radius:2px;
+  background:linear-gradient(var(--brand),var(--accent));display:block;
+}
+.check-list{list-style:none;display:grid;gap:12px}
+.check-list li{
+  display:flex;gap:10px;font-size:14px;color:var(--ink-soft);
+  padding-bottom:12px;border-bottom:1px dashed var(--line);
+}
+.check-list li:last-child{border-bottom:0;padding-bottom:0}
+.check-list li b{color:var(--ink);font-weight:600}
+.tick{
+  flex:0 0 20px;width:20px;height:20px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);
+  display:grid;place-items:center;font-size:12px;font-weight:800;margin-top:3px;
+}
+
+/* ---------- notice ---------- */
+.notice{
+  margin:26px auto 0;
+  display:flex;gap:12px;align-items:flex-start;
+  background:#fffaf0;border:1px solid #ffe3b0;
+  border-radius:14px;padding:14px 18px;font-size:13.5px;color:#8a6212;
+}
+.notice b{color:#6b4a05}
+
+/* ---------- section base ---------- */
+section{padding:64px 0}
+.section-head{margin-bottom:34px;max-width:760px}
+.section-head .eyebrow{
+  font-size:13px;font-weight:700;letter-spacing:2px;
+  color:var(--brand);text-transform:uppercase;margin-bottom:10px;
+}
+.section-head h2{font-size:clamp(22px,3vw,30px);font-weight:800;line-height:1.35}
+.section-head p{margin-top:12px;color:var(--ink-soft);font-size:15px}
+
+/* ---------- 内容板块 ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:26px 24px;
+  transition:.24s;position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#d9d2fb}
+.card .num{
+  font-size:13px;font-weight:800;color:#bdb4ee;letter-spacing:1px;
+}
+.card h3{font-size:17px;font-weight:700;margin:10px 0 10px}
+.card p{font-size:14px;color:var(--ink-soft)}
+.card .tagline{
+  margin-top:16px;display:inline-block;font-size:12.5px;font-weight:600;
+  color:var(--brand-deep);background:var(--bg);
+  padding:5px 12px;border-radius:999px;
+}
+
+/* ---------- 访问说明 ---------- */
+.steps{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.step-list{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{
+  background:var(--bg);border-radius:var(--radius);
+  padding:24px 22px;border:1px solid var(--line);
+}
+.step .idx{
+  counter-increment:s;
+  width:34px;height:34px;border-radius:10px;
+  background:#fff;border:1px solid var(--line);
+  display:grid;place-items:center;font-weight:800;color:var(--brand);
+  margin-bottom:14px;
+}
+.step .idx::before{content:counter(s,decimal-leading-zero)}
+.step h3{font-size:15.5px;font-weight:700;margin-bottom:8px}
+.step p{font-size:13.5px;color:var(--ink-soft)}
+
+/* ---------- 内容栏目 ---------- */
+.channels{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.channel{
+  display:flex;gap:18px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;transition:.24s;
+}
+.channel:hover{border-color:#d9d2fb;box-shadow:var(--shadow)}
+.channel-icon{
+  flex:0 0 52px;height:52px;border-radius:14px;
+  display:grid;place-items:center;font-size:22px;
+  background:linear-gradient(135deg,#efeaff,#ffe9f1);
+}
+.channel h3{font-size:16.5px;font-weight:700;margin-bottom:8px}
+.channel p{font-size:14px;color:var(--ink-soft)}
+.channel ul{margin-top:10px;padding-left:18px;font-size:13.5px;color:var(--ink-soft)}
+.channel ul li{margin-bottom:4px}
+
+/* ---------- FAQ ---------- */
+.faq{background:#fff;border-top:1px solid var(--line)}
+.faq-list{display:grid;gap:14px;max-width:900px}
+details{
+  background:var(--bg);border:1px solid var(--line);
+  border-radius:14px;padding:18px 22px;transition:.2s;
+}
+details[open]{background:#fff;border-color:#d9d2fb;box-shadow:var(--shadow)}
+summary{
+  cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"+";font-size:20px;font-weight:400;color:var(--brand);
+  flex:0 0 auto;transition:.2s;
+}
+details[open] summary::after{content:"−"}
+details p{margin-top:12px;font-size:14.5px;color:var(--ink-soft)}
+
+/* ---------- 提示区 ---------- */
+.tips{
+  background:linear-gradient(135deg,#241a52,#3b2a86);
+  color:#fff;border-radius:22px;padding:44px 40px;
+  display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;
+}
+.tips h2{font-size:clamp(20px,2.6vw,26px);font-weight:800;line-height:1.4}
+.tips p{margin-top:14px;font-size:14.5px;color:#cfc6f5}
+.tips ul{list-style:none;display:grid;gap:12px}
+.tips li{
+  display:flex;gap:10px;font-size:14.5px;color:#e6e1ff;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  padding:12px 16px;border-radius:12px;
+}
+.tips li b{color:#fff;font-weight:700}
+
+/* ---------- footer ---------- */
+.site-footer{
+  background:#161329;color:#a49fc4;padding:52px 0 30px;margin-top:0;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;
+  padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.10);
+}
+.footer-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:18px;margin-bottom:14px}
+.footer-brand .logo-mark{width:34px;height:34px;font-size:15px;border-radius:10px}
+.site-footer p{font-size:13.5px;line-height:1.8}
+.footer-col h4{color:#fff;font-size:14.5px;font-weight:700;margin-bottom:14px}
+.footer-col ul{list-style:none;display:grid;gap:9px;font-size:13.5px}
+.footer-col a:hover{color:#fff}
+.footer-bottom{
+  padding-top:22px;display:flex;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;font-size:13px;color:#7d78a0;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .hero-inner{grid-template-columns:1fr;gap:34px;padding:48px 0}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .step-list{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .tips{grid-template-columns:1fr;padding:34px 26px}
+}
+@media (max-width:720px){
+  .header-inner{height:auto;padding:12px 0;flex-wrap:wrap}
+  .main-nav{order:3;width:100%;justify-content:flex-start;gap:2px}
+  .main-nav a{padding:6px 10px;font-size:13px}
+  .channels{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:1fr}
+  .step-list{grid-template-columns:1fr}
+  section{padding:46px 0}
+  .hero h1{font-size:26px}
+  .footer-grid{grid-template-columns:1fr}
+  .btn{width:100%;justify-content:center}
+  .hero-actions{gap:10px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark">91</span>
+      <span>91次元<small>内容导航 · 访问指引</small></span>
+    </a>
+    <nav class="main-nav" aria-label="主导航">
+      <a href="#intro">入口说明</a>
+      <a href="#steps">访问步骤</a>
+      <a href="#channels">内容板块</a>
+      <a href="#faq">常见问题</a>
+      <a href="#tips">使用提示</a>
+    </nav>
+    <a class="nav-cta" href="#intro">了解入口</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="hero-tag"><i></i>二次元内容平台 · 入口信息整理</span>
+        <h1>91次元官网入口<em>访问指引</em>与内容板块说明</h1>
+        <p class="hero-lead">
+          很多用户在搜索“91次元官网入口”时，真正想确认的是：从哪里进入、进去之后能看到什么内容、访问过程中需要注意哪些问题。本页围绕入口地址的识别方法、站内常见内容板块以及访问注意事项进行整理，帮助你更清楚地判断和使用这类二次元内容平台。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#steps">查看访问步骤</a>
+          <a class="btn btn-ghost" href="#channels">了解内容板块</a>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <h2><span></span>访问前先确认这几点</h2>
+        <ul class="check-list">
+          <li><span class="tick">✓</span><span><b>确认域名来源</b>：优先通过可信的收藏夹或已记录地址进入，避免点击来源不明的短链。</span></li>
+          <li><span class="tick">✓</span><span><b>留意页面一致性</b>：正规入口的页面结构、导航栏目通常保持稳定，不会频繁跳转到无关站点。</span></li>
+          <li><span class="tick">✓</span><span><b>注意设备安全</b>：遇到强制下载、异常弹窗时应立即关闭页面。</span></li>
+        </ul>
+      </aside>
+    </div>
+    <div class="wrap">
+      <div class="notice">
+        <span>⚠</span>
+        <p><b>说明：</b>本站为内容导航与访问指引页面，不提供任何资源存储或下载服务。网络站点地址可能因运营调整而变化，请以实际可访问的官方页面为准，并遵守所在地法律法规与平台使用条款。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 入口说明 -->
+  <section id="intro">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Entrance Guide</div>
+        <h2>“官网入口”到底指什么</h2>
+        <p>在中文互联网语境里，“官网入口”通常并不是一个固定的网址，而是用户对“从哪里进入某个平台”的统称。理解这一点，能帮你更理性地对待搜索结果里的各种链接。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="num">01</div>
+          <h3>入口 ≠ 唯一网址</h3>
+          <p>同一类内容平台在不同网络环境下，可能出现多个可访问地址。用户口中的“入口”，更多指的是当前可用的访问路径，而不是一个永久不变的链接。</p>
+          <span class="tagline">先建立正确预期</span>
+        </article>
+        <article class="card">
+          <div class="num">02</div>
+          <h3>搜索结果的甄别</h3>
+          <p>搜索结果中排序靠前的不一定是最合适的页面。建议查看页面标题与描述是否与“次元”“动漫”“二次元内容”等主题一致，避免进入内容错位的站点。</p>
+          <span class="tagline">看标题与描述</span>
+        </article>
+        <article class="card">
+          <div class="num">03</div>
+          <h3>收藏比反复搜索更稳</h3>
+          <p>找到可用页面后，通过浏览器书签保存，比每次重新搜索更安全，也能减少误入仿冒页面的概率。</p>
+          <span class="tagline">养成收藏习惯</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 访问步骤 -->
+  <section id="steps" class="steps">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Access Steps</div>
+        <h2>一次完整的访问流程</h2>
+        <p>把访问过程拆成四步，可以更清楚地判断自己是否处在正常的浏览路径上。</p>
+      </div>
+      <div class="step-list">
+        <div class="step">
+          <div class="idx"></div>
+          <h3>确认设备与网络</h3>
+          <p>使用较新版本的浏览器，保持网络稳定。部分内容页面在移动端与桌面端的排版差异较大，可按习惯选择。</p>
+        </div>
+        <div class="step">
+          <div class="idx"></div>
+          <h3>核对页面主题</h3>
+          <p>进入后先看首页导航与栏目名称，是否围绕动漫、漫画、二次元资讯等展开，避免进入主题不符的站点。</p>
+        </div>
+        <div class="step">
+          <div class="idx"></div>
+          <h3>浏览内容板块</h3>
+          <p>按分类、更新、榜单等维度查找内容。遇到需要额外授权的页面，先判断其必要性再决定是否继续。</p>
+        </div>
+        <div class="step">
+          <div class="idx"></div>
+          <h3>保存并退出</h3>
+          <p>将可用地址加入书签，浏览结束后正常关闭页面。若中途出现异常跳转，及时清理浏览记录。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 内容板块 -->
+  <section id="channels">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Content Sections</div>
+        <h2>这类平台通常包含哪些内容板块</h2>
+        <p>不同站点在具体栏目命名上会有差异，但整体结构往往围绕“找内容—看内容—追更新”这条主线展开。</p>
+      </div>
+      <div class="channels">
+        <article class="channel">
+          <div class="channel-icon">📚</div>
+          <div>
+            <h3>分类与标签导航</h3>
+            <p>通过题材、地区、风格等维度把内容分组，是二次元内容平台最常见的入口形式。</p>
+            <ul>
+              <li>按题材：日常、奇幻、科幻、恋爱等</li>
+              <li>按地区或语言：便于筛选内容来源</li>
+              <li>按标签组合：适合已有明确偏好的用户</li>
+            </ul>
+          </div>
+        </article>
+        <article class="channel">
+          <div class="channel-icon">🆕</div>
+          <div>
+            <h3>更新与连载动态</h3>
+            <p>更新列表一般按时间排序，适合长期追更的用户快速定位到最新内容。</p>
+            <ul>
+              <li>按日期查看当日或本周更新</li>
+              <li>关注连载状态：连载中或已完结</li>
+              <li>注意更新时间规律，减少反复刷新</li>
+            </ul>
+          </div>
+        </article>
+        <article class="channel">
+          <div class="channel-icon">🏆</div>
+          <div>
+            <h3>榜单与推荐位</h3>
+            <p>榜单反映的是某一时段内的浏览热度，可以作为选内容的参考，但不必当作唯一标准。</p>
+            <ul>
+              <li>热榜：短期关注度较高</li>
+              <li>收藏榜：更偏向长期口碑</li>
+              <li>编辑推荐：人工筛选，风格差异较大</li>
+            </ul>
+          </div>
+        </article>
+        <article class="channel">
+          <div class="channel-icon">💬</div>
+          <div>
+            <h3>资讯与社区讨论</h3>
+            <p>部分平台会附带资讯、评论或讨论区，用于交流作品信息与观看体验。</p>
+            <ul>
+              <li>资讯：新作、活动、行业动态</li>
+              <li>评论：阅读顺序与内容讨论</li>
+              <li>参与讨论时注意文明表达</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">FAQ</div>
+        <h2>关于91次元官网入口的常见问题</h2>
+        <p>以下问题来自用户搜索这类关键词时最常出现的疑问，回答以通用、稳妥为原则。</p>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>为什么搜索到的入口地址经常发生变化？</summary>
+          <p>内容类站点的域名可能因运营调整、网络环境差异等原因出现变动，这属于比较常见的情况。与其记住某一个具体地址，不如记住识别方法：看页面主题是否一致、导航结构是否完整、是否出现异常跳转。掌握判断标准，比记住单个链接更实用。</p>
+        </details>
+        <details>
+          <summary>进入页面后应该先看什么？</summary>
+          <p>建议先看顶部导航和首页主栏目，确认站点主题是否围绕二次元内容展开。然后再根据自己的目的选择路径：想找新内容看更新区，想找热门内容看榜单区，想按偏好筛选则用分类或标签导航。</p>
+        </details>
+        <details>
+          <summary>访问这类页面需要注意哪些安全问题？</summary>
+          <p>主要注意三点：一是不要随意下载来源不明的安装包或插件；二是遇到要求输入敏感个人信息的页面应保持警惕；三是如果页面频繁弹出广告或自动跳转，建议直接关闭并清理浏览器缓存。使用正规浏览器并保持系统更新，也能降低风险。</p>
+        </details>
+        <details>
+          <summary>移动端和电脑端访问有区别吗？</summary>
+          <p>内容本身通常是一致的，区别主要在排版和操作方式上。移动端更适合碎片时间浏览更新列表，电脑端在大屏浏览分类和榜单时效率更高。可以根据使用场景选择，不必强求统一。</p>
+        </details>
+        <details>
+          <summary>页面内容无法正常显示怎么办？</summary>
+          <p>可以先尝试刷新页面、切换网络或更换浏览器。如果仍然无法显示，可能是该地址当前不可用。此时不建议反复尝试来源不明的备用链接，更稳妥的做法是暂停访问，等待确认可靠的信息来源。</p>
+        </details>
+        <details>
+          <summary>本站与91次元是什么关系？</summary>
+          <p>本站是围绕“91次元官网入口”这一搜索需求整理的信息指引页面，用于说明访问方式、内容板块与注意事项，不提供内容存储、下载或账号服务，也不代表任何具体平台的官方立场。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用提示 -->
+  <section id="tips">
+    <div class="wrap">
+      <div class="tips">
+        <div>
+          <h2>理性访问，比找到“入口”更重要</h2>
+          <p>入口只是第一步。真正影响浏览体验的，是访问习惯、内容判断和对风险的敏感度。把下面几点变成习惯，能省去很多麻烦。</p>
+        </div>
+        <ul>
+          <li><b>固定来源：</b>用书签保存确认可用的页面，减少每次重新搜索。</li>
+          <li><b>保持克制：</b>不轻易点击夸张标题和强制下载提示。</li>
+          <li><b>注意合规：</b>遵守所在地法律法规，尊重内容版权与平台规则。</li>
+          <li><b>保护隐私：</b>不在来源不明的页面填写账号、手机号等信息。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="logo-mark">91</span>
+          <span>91次元导航</span>
+        </div>
+        <p>围绕“91次元官网入口”整理访问方式、内容板块与使用注意事项的信息指引页面，帮助用户更清楚地理解这类二次元内容平台的入口信息。</p>
+      </div>
+      <div class="footer-col">
+        <h4>页面导航</h4>
+        <ul>
+          <li><a href="#intro">入口说明</a></li>
+          <li><a href="#steps">访问步骤</a></li>
+          <li><a href="#channels">内容板块</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>相关主题</h4>
+        <ul>
+          <li><a href="#channels">二次元内容分类</a></li>
+          <li><a href="#channels">更新与榜单</a></li>
+          <li><a href="#tips">访问安全提示</a></li>
+          <li><a href="#faq">入口常见疑问</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>使用声明</h4>
+        <ul>
+          <li>不提供内容存储与下载</li>
+          <li>不涉及账号与付费服务</li>
+          <li>地址以实际可访问为准</li>
+          <li>请遵守当地法律法规</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 91次元导航 · 内容指引页面</span>
+      <span>页面信息仅供参考，请以实际访问结果为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('.main-nav a[href^="#"]');
+  links.forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
