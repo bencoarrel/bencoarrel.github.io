@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>咔哔漫画app-漫画阅读客户端功能与使用指南</title>
+<meta name="description" content="咔哔漫画app是一款面向漫画爱好者的移动端阅读客户端，本文介绍其功能特点、漫画分类、阅读体验、使用方式与常见问题，帮助新用户快速了解并上手。">
+<meta name="keywords" content="咔哔漫画app,咔哔漫画,漫画app,手机漫画阅读,漫画客户端,在线漫画">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  :root {
+    --main: #ff5c8a;
+    --main-deep: #e63e6d;
+    --accent: #6c5ce7;
+    --bg: #fff7fa;
+    --card: #ffffff;
+    --text: #2b2733;
+    --text-sub: #6d6878;
+    --line: #f0e6ec;
+    --radius: 14px;
+  }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .wrap {
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* 顶部导航 */
+  .site-header {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, var(--main), var(--accent));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .logo span em {
+    color: var(--main);
+    font-style: normal;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 15px;
+    color: var(--text-sub);
+  }
+  .nav-links a:hover {
+    color: var(--main-deep);
+  }
+  .nav-cta {
+    background: var(--main);
+    color: #fff;
+    padding: 9px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+  }
+  .nav-cta:hover {
+    background: var(--main-deep);
+  }
+  .menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  /* 首屏 */
+  .hero {
+    padding: 54px 0 46px;
+    background: radial-gradient(circle at 88% 10%, #ffe3ee 0%, rgba(255, 247, 250, 0) 55%),
+                radial-gradient(circle at 5% 90%, #e9e5ff 0%, rgba(255, 247, 250, 0) 50%);
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 46px;
+    align-items: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: #ffe6ef;
+    color: var(--main-deep);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 30px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 40px;
+    line-height: 1.28;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 18px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--main);
+  }
+  .hero p.lead {
+    font-size: 16px;
+    color: var(--text-sub);
+    max-width: 540px;
+    margin-bottom: 28px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.2s;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--main), var(--accent));
+    color: #fff;
+    box-shadow: 0 10px 24px -10px rgba(255, 92, 138, 0.75);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+  }
+  .btn-ghost {
+    background: #fff;
+    color: var(--text);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover {
+    border-color: var(--main);
+    color: var(--main-deep);
+  }
+  .hero-facts {
+    display: flex;
+    gap: 34px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+  .fact-item strong {
+    display: block;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--main-deep);
+  }
+  .fact-item span {
+    font-size: 13px;
+    color: var(--text-sub);
+  }
+
+  /* 手机模型 */
+  .phone-mock {
+    width: 268px;
+    height: 520px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 34px;
+    border: 8px solid #241f2e;
+    box-shadow: 0 30px 60px -22px rgba(45, 30, 55, 0.45);
+    overflow: hidden;
+    position: relative;
+  }
+  .phone-top {
+    height: 46px;
+    background: linear-gradient(135deg, var(--main), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .phone-body {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: calc(100% - 46px);
+    overflow: hidden;
+  }
+  .phone-banner {
+    height: 96px;
+    border-radius: 12px;
+    background: linear-gradient(120deg, #ffd3e2, #d9d2ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8a3a5c;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .phone-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .phone-cover {
+    height: 74px;
+    border-radius: 9px;
+    background: linear-gradient(160deg, #f4eefb, #ffe9f1);
+    border: 1px solid #f3e7ef;
+    display: flex;
+    align-items: flex-end;
+    padding: 5px;
+    font-size: 10px;
+    color: #7a6f85;
+    font-weight: 600;
+  }
+  .phone-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+  .phone-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: #fbf7fa;
+    border-radius: 10px;
+    padding: 7px;
+  }
+  .phone-thumb {
+    width: 34px;
+    height: 44px;
+    border-radius: 6px;
+    background: linear-gradient(150deg, #ffe0ec, #e3ddff);
+    flex-shrink: 0;
+  }
+  .phone-lines {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .phone-lines i {
+    display: block;
+    height: 7px;
+    border-radius: 4px;
+    background: #eee5ec;
+  }
+  .phone-lines i:first-child {
+    width: 70%;
+    background: #e6dae6;
+  }
+  .phone-lines i:last-child {
+    width: 45%;
+  }
+
+  /* 通用区块 */
+  section {
+    padding: 52px 0;
+  }
+  .section-head {
+    margin-bottom: 30px;
+  }
+  .section-head .kicker {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--main);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .section-head h2 {
+    font-size: 27px;
+    font-weight: 800;
+    margin: 6px 0 10px;
+  }
+  .section-head p {
+    color: var(--text-sub);
+    font-size: 15px;
+    max-width: 680px;
+  }
+
+  /* 功能卡片 */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .feature-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 22px;
+    transition: 0.22s;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px -22px rgba(120, 60, 110, 0.4);
+    border-color: #ffd6e4;
+  }
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #ffe9f1;
+    color: var(--main-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  .feature-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .feature-card p {
+    font-size: 14px;
+    color: var(--text-sub);
+  }
+
+  /* 分类 */
+  .cate-section {
+    background: #fff;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .cate-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .cate-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 18px;
+    background: linear-gradient(160deg, #fff, #fff6fa);
+    transition: 0.2s;
+  }
+  .cate-card:hover {
+    border-color: var(--main);
+    background: linear-gradient(160deg, #fff, #ffeef5);
+  }
+  .cate-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cate-card h3::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--main);
+    flex-shrink: 0;
+  }
+  .cate-card p {
+    font-size: 13.5px;
+    color: var(--text-sub);
+  }
+
+  /* 使用指南 */
+  .guide-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .step {
+    display: flex;
+    gap: 16px;
+  }
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--main), var(--accent));
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-body h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .step-body p {
+    font-size: 14px;
+    color: var(--text-sub);
+  }
+  .tips-box {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 24px;
+  }
+  .tips-box h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .tips-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tips-box li {
+    font-size: 14px;
+    color: var(--text-sub);
+    padding-left: 20px;
+    position: relative;
+  }
+  .tips-box li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--main);
+    font-weight: 700;
+  }
+
+  /* 场景 */
+  .scene-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .scene-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--main);
+  }
+  .scene-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .scene-card p {
+    font-size: 14px;
+    color: var(--text-sub);
+  }
+
+  /* FAQ */
+  .faq-section {
+    background: #fff;
+    border-top: 1px solid var(--line);
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 860px;
+  }
+  .faq-item {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fffbfd;
+    overflow: hidden;
+  }
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 17px 20px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    font-family: inherit;
+  }
+  .faq-q::after {
+    content: "+";
+    font-size: 20px;
+    color: var(--main);
+    font-weight: 400;
+    transition: 0.2s;
+  }
+  .faq-item.open .faq-q::after {
+    transform: rotate(45deg);
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.28s ease;
+  }
+  .faq-a p {
+    padding: 0 20px 18px;
+    font-size: 14.5px;
+    color: var(--text-sub);
+  }
+  .faq-item.open .faq-a {
+    max-height: 320px;
+  }
+
+  /* 页脚 */
+  .site-footer {
+    background: #241f2e;
+    color: #cfc7d6;
+    padding: 48px 0 26px;
+    margin-top: 10px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 34px;
+    margin-bottom: 34px;
+  }
+  .footer-brand .logo {
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .footer-brand p {
+    font-size: 13.5px;
+    color: #a79fb2;
+    max-width: 300px;
+  }
+  .footer-col h4 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .footer-col li {
+    font-size: 13.5px;
+    color: #a79fb2;
+  }
+  .footer-col a:hover {
+    color: var(--main);
+  }
+  .footer-bottom {
+    border-top: 1px solid #3a3345;
+    padding-top: 20px;
+    font-size: 12.5px;
+    color: #8b8397;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* 响应式 */
+  @media (max-width: 960px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .hero h1 {
+      font-size: 32px;
+    }
+    .phone-mock {
+      margin: 0 auto;
+    }
+    .feature-grid,
+    .scene-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .cate-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .guide-layout {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 680px) {
+    .nav-links,
+    .nav-cta {
+      display: none;
+    }
+    .menu-toggle {
+      display: block;
+    }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 66px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 18px 24px;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 14px 24px -18px rgba(0, 0, 0, 0.3);
+    }
+    .hero {
+      padding: 36px 0 30px;
+    }
+    .hero h1 {
+      font-size: 27px;
+    }
+    .hero-facts {
+      gap: 22px;
+    }
+    .feature-grid,
+    .scene-grid,
+    .cate-grid {
+      grid-template-columns: 1fr;
+    }
+    .section-head h2 {
+      font-size: 22px;
+    }
+    section {
+      padding: 40px 0;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">咔</span>
+      <span>咔哔<em>漫画</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#features">功能特点</a>
+      <a href="#category">漫画分类</a>
+      <a href="#guide">使用指南</a>
+      <a href="#scene">阅读场景</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a href="#guide" class="nav-cta">立即了解</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="展开导航">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <span class="hero-tag">漫画阅读客户端</span>
+        <h1>咔哔漫画app<br>把喜欢的漫画装进<em>手机里</em></h1>
+        <p class="lead">咔哔漫画app是一款面向漫画爱好者的移动端阅读工具，主打分类清晰、翻页顺滑和追更方便。无论你是想找一部新番追更，还是想重温经典长篇，都可以在客户端里按题材、热度或更新节奏快速定位内容。</p>
+        <div class="hero-actions">
+          <a href="#features" class="btn btn-primary">查看功能特点</a>
+          <a href="#guide" class="btn btn-ghost">了解使用方式</a>
+        </div>
+        <div class="hero-facts">
+          <div class="fact-item">
+            <strong>多题材</strong>
+            <span>恋爱 / 热血 / 悬疑等</span>
+          </div>
+          <div class="fact-item">
+            <strong>追更提醒</strong>
+            <span>关注作品更新动态</span>
+          </div>
+          <div class="fact-item">
+            <strong>离线阅读</strong>
+            <span>缓存后随时翻看</span>
+          </div>
+        </div>
+      </div>
+      <div class="phone-mock" aria-hidden="true">
+        <div class="phone-top">咔哔漫画</div>
+        <div class="phone-body">
+          <div class="phone-banner">今日推荐 · 精选漫画</div>
+          <div class="phone-grid">
+            <div class="phone-cover">恋爱</div>
+            <div class="phone-cover">热血</div>
+            <div class="phone-cover">悬疑</div>
+            <div class="phone-cover">校园</div>
+            <div class="phone-cover">奇幻</div>
+            <div class="phone-cover">日常</div>
+          </div>
+          <div class="phone-list">
+            <div class="phone-row">
+              <div class="phone-thumb"></div>
+              <div class="phone-lines"><i></i><i></i></div>
+            </div>
+            <div class="phone-row">
+              <div class="phone-thumb"></div>
+              <div class="phone-lines"><i></i><i></i></div>
+            </div>
+            <div class="phone-row">
+              <div class="phone-thumb"></div>
+              <div class="phone-lines"><i></i><i></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 功能特点 -->
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Features</span>
+        <h2>咔哔漫画app的核心功能</h2>
+        <p>一款漫画客户端是否好用，往往取决于找漫画够不够快、看漫画够不够顺、追漫画够不够省心。下面从这三个角度拆解它的主要功能。</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>多维分类检索</h3>
+          <p>支持按题材、状态、人气、更新时间等维度筛选，配合关键词搜索，帮助你在大量作品中快速缩小范围，找到对胃口的漫画。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">📖</div>
+          <h3>顺滑翻页阅读</h3>
+          <p>阅读界面以画面为主体，支持上下滚动与左右翻页两种模式，缩放、亮度、背景色等参数可按个人习惯调整，长时间阅读更舒适。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🔔</div>
+          <h3>追更与书架</h3>
+          <p>把常看的作品加入书架，客户端会记录阅读进度。当关注的作品有更新时，可通过更新列表集中查看，不必逐个页面手动翻找。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">📥</div>
+          <h3>离线缓存</h3>
+          <p>在 Wi-Fi 环境下提前缓存章节，通勤、地铁或网络不稳定时也能继续阅读，减少因加载中断带来的阅读打断。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🕘</div>
+          <h3>阅读历史记录</h3>
+          <p>自动保存最近阅读的作品与章节位置，换设备或隔一段时间回来，也能从上次停下的地方继续往下看。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>个性化推荐</h3>
+          <p>依据浏览与收藏行为给出内容推荐，首页会呈现不同风格的漫画入口，帮助读者发现平时不容易注意到的作品。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 漫画分类 -->
+  <section class="cate-section" id="category">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Category</span>
+        <h2>常见漫画题材分类</h2>
+        <p>不同读者偏好差异很大，清晰的题材划分能显著降低选择成本。以下是客户端中较为常见的几类内容方向。</p>
+      </div>
+      <div class="cate-grid">
+        <div class="cate-card">
+          <h3>恋爱情感</h3>
+          <p>以人物关系与情感推进为主线，节奏通常较为细腻，适合喜欢慢热叙事的读者。</p>
+        </div>
+        <div class="cate-card">
+          <h3>热血战斗</h3>
+          <p>强调成长、对抗与目标感，画面张力强，适合追求爽快阅读节奏的读者。</p>
+        </div>
+        <div class="cate-card">
+          <h3>悬疑推理</h3>
+          <p>依靠线索铺设与反转推动剧情，阅读时更适合连贯跟进，避免跳章影响理解。</p>
+        </div>
+        <div class="cate-card">
+          <h3>校园日常</h3>
+          <p>围绕校园生活与轻喜剧展开，篇幅通常较短，适合碎片时间随手翻看。</p>
+        </div>
+        <div class="cate-card">
+          <h3>奇幻冒险</h3>
+          <p>构建独立世界观与设定体系，适合喜欢沉浸式阅读、愿意跟随长篇展开的读者。</p>
+        </div>
+        <div class="cate-card">
+          <h3>都市生活</h3>
+          <p>取材现实场景，聚焦职场、家庭与成长话题，代入感较强，阅读门槛相对低。</p>
+        </div>
+        <div class="cate-card">
+          <h3>科幻未来</h3>
+          <p>以科技设定与未来社会为背景，常搭配较强的视觉表现，适合喜欢脑洞设定的读者。</p>
+        </div>
+        <div class="cate-card">
+          <h3>治愈温情</h3>
+          <p>情绪基调温和，节奏舒缓，适合在压力较大时作为放松型阅读选择。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section id="guide">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Guide</span>
+        <h2>如何开始使用咔哔漫画app</h2>
+        <p>新用户通常关心从哪里入手、怎么找漫画、怎么看更舒服。按下面的顺序操作，基本可以覆盖日常使用需求。</p>
+      </div>
+      <div class="guide-layout">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>通过正规渠道获取客户端</h3>
+              <p>建议在手机自带应用商店或官方公布的分发渠道搜索下载，安装前留意应用名称、开发者信息与权限说明，避免安装来源不明的安装包。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>完成基础设置</h3>
+              <p>首次打开后可先设置阅读方向、翻页方式、背景色与字号等偏好，这些设置会直接影响后续阅读体验，提前调好能省去反复调整。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>用分类与搜索找作品</h3>
+              <p>没有明确目标时，可从题材分类或推荐位浏览；已有想看的作品，直接用关键词搜索，再结合状态与热度排序缩小结果范围。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h3>加入书架并跟踪更新</h3>
+              <p>确定要长期追的作品后加入书架，之后通过更新列表或书架页面集中查看进度，避免遗漏新章节。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <h3>按需缓存章节</h3>
+              <p>对经常在外阅读的用户，可在网络稳定时提前缓存，注意留意存储空间占用，定期清理已读完的缓存内容。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="tips-box">
+          <h3>使用中的几点提醒</h3>
+          <ul>
+            <li>留意应用权限申请，与阅读无关的敏感权限可谨慎授予。</li>
+            <li>缓存内容会占用手机存储，建议定期在设置中清理。</li>
+            <li>部分作品可能存在地区或版权差异，能否阅读以客户端实际显示为准。</li>
+            <li>阅读时注意用眼时长，适时休息，避免长时间近距离盯屏。</li>
+            <li>遇到加载异常可先检查网络，再尝试切换清晰度或重新进入章节。</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 阅读场景 -->
+  <section id="scene">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Scenarios</span>
+        <h2>适合哪些阅读场景</h2>
+        <p>移动端漫画阅读的优势在于随时可用，不同场景对客户端的要求也不一样。</p>
+      </div>
+      <div class="scene-grid">
+        <div class="scene-card">
+          <h3>通勤路上</h3>
+          <p>时间碎片化，适合阅读单章结构清晰、节奏明快的作品。提前缓存可以避开地铁信号波动带来的加载等待。</p>
+        </div>
+        <div class="scene-card">
+          <h3>睡前放松</h3>
+          <p>可调低屏幕亮度、切换深色背景，选择治愈或日常题材，控制单次阅读时长，减少对睡眠的影响。</p>
+        </div>
+        <div class="scene-card">
+          <h3>周末集中追更</h3>
+          <p>适合一次性补完积累的章节，长篇作品建议按卷或按篇章推进，避免剧情线索混乱。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">FAQ</span>
+        <h2>关于咔哔漫画app的常见问题</h2>
+        <p>整理了一些新用户较常提出的疑问，供参考。</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" type="button">咔哔漫画app主要提供什么内容？</button>
+          <div class="faq-a">
+            <p>它是一款移动端漫画阅读客户端，主要提供漫画作品的分类浏览、搜索、在线阅读与追更管理等功能。具体可阅读的作品范围会随平台内容调整而变化，以客户端内实际展示为准。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">阅读时卡顿或加载缓慢怎么办？</button>
+          <div class="faq-a">
+            <p>可以先检查当前网络环境，切换到较稳定的 Wi-Fi 或移动网络；也可以尝试降低图片清晰度、清理应用缓存或重新进入章节。如果多部作品都出现同类问题，可能是网络或服务端波动，稍后再试通常会有改善。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">缓存的内容会一直保留吗？</button>
+          <div class="faq-a">
+            <p>缓存文件保存在本地，通常不会自动长期保留，可能因清理存储、卸载重装或应用内清理操作而失效。建议把缓存视为临时离线手段，重要进度以书架和阅读记录为准。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">如何更快找到自己喜欢的漫画？</button>
+          <div class="faq-a">
+            <p>可以先用题材分类做粗筛，再结合更新状态和人气排序缩小范围；阅读几章后把喜欢的作品加入书架，客户端会据此优化后续推荐，长期使用后匹配度通常会逐步提升。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">下载安装时需要注意什么？</button>
+          <div class="faq-a">
+            <p>优先选择手机应用商店或官方渠道，安装前核对应用名称与开发者信息，谨慎对待来源不明的安装包。安装后可在系统设置中查看并管理应用权限，关闭与阅读无关的授权。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-mark">咔</span>
+          <span>咔哔漫画</span>
+        </div>
+        <p>一个面向漫画爱好者的移动端阅读客户端介绍页，帮助你了解它的功能、分类与使用方式。</p>
+      </div>
+      <div class="footer-col">
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#features">功能特点</a></li>
+          <li><a href="#category">漫画分类</a></li>
+          <li><a href="#guide">使用指南</a></li>
+          <li><a href="#scene">阅读场景</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>阅读建议</h4>
+        <ul>
+          <li>合理安排阅读时长</li>
+          <li>注意用眼与休息</li>
+          <li>定期清理缓存文件</li>
+          <li>通过正规渠道获取应用</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>常见问题</h4>
+        <ul>
+          <li><a href="#faq">加载缓慢处理</a></li>
+          <li><a href="#faq">缓存保留说明</a></li>
+          <li><a href="#faq">内容查找技巧</a></li>
+          <li><a href="#faq">安装注意事项</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>咔哔漫画app · 漫画阅读客户端功能介绍页</span>
+      <span>页面内容仅供参考，具体功能以客户端实际版本为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 移动端导航展开
+  var menuToggle = document.getElementById('menuToggle');
+  var navLinks = document.getElementById('navLinks');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function () {
+      navLinks.classList.toggle('open');
+    });
+    navLinks.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+      }
+    });
+  }
+
+  // FAQ 折叠
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function (item) {
+    var btn = item.querySelector('.faq-q');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      faqItems.forEach(function (other) {
+        other.classList.remove('open');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    });
+  });
+</script>
+
+</body>
+  </html>
